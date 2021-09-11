@@ -1,0 +1,10 @@
+var express = require('express');
+var auth = require('./auth');
+var verifikasi = require('./verifikasi');
+var router = express.Router();
+var person = require('../controller/person');
+router.post('/api/v1/register', auth.registrasi);
+router.post('/api/v1/login',auth.login);
+router.get('/api/v1/halamanrahasia',verifikasi(),auth.halamanrahasia);
+router.get('/api/v1/users',verifikasi(),person.users);
+module.exports = router;
